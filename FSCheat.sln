@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSCheat", "FSCheat\FSCheat.csproj", "{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF101D12-5580-40BE-A797-38031FF27A65}
+	EndGlobalSection
+EndGlobal
