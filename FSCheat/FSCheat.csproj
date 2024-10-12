@@ -94,6 +94,7 @@
     <Compile Include="Cheats\MaxRessources.cs" />
     <Compile Include="Cheats\FinishAllTrainings.cs" />
     <Compile Include="Cheats\ResetDwellerLevels.cs" />
+    <Compile Include="Cheats\SetMaxSpecial.cs" />
     <Compile Include="Cheats\CustomCheat.cs" />
     <Compile Include="Cheats\CheatInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

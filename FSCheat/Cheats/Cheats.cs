@@ -18,6 +18,7 @@ namespace FSCheat.Cheats
             new SetPetBoxes(),
             new SetQuantum(),
             new SetStimRad(),
+            new SetMaxSpecial(),
             //new ResetDwellerLevels(),
             };
     }

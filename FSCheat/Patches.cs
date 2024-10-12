@@ -18,6 +18,7 @@ namespace FSCheat
         internal static bool maxLevelDwellers = false;
         internal static List<Dweller> dwellers = new List<Dweller>();
         internal static List<DwellerExperience> dwellerExperiences = new List<DwellerExperience>();
+        internal static List<DwellerStats> dwellerStats = new List<DwellerStats>();
         internal static List<TrainingSlot> trainingSlots = new List<TrainingSlot>();
         
         [HarmonyPatch(typeof(Application), "get_isEditor")]
@@ -93,6 +94,16 @@ namespace FSCheat
         {
             dwellerExperiences.Add(__instance);
             Utils.DisplayMessage("DwellerExperience added to list: "+ dweller);
+        }
+
+        [HarmonyPatch(typeof(DwellerStats))]
+        [HarmonyPatch(MethodType.Constructor)]
+        [HarmonyPatch(new Type[] { typeof(Dweller) })]
+        [HarmonyPostfix]
+        private static void DwellerStatsConstructorPatch(DwellerStats __instance, Dweller inDweller)
+        {
+            dwellerStats.Add(__instance);
+            Utils.DisplayMessage("DwellerStats added to list: "+ inDweller);
         }
 
         [HarmonyPatch(typeof(TrainingSlot))]
