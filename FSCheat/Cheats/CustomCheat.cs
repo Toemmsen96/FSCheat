@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FSCheat.Cheats
 {
-    internal abstract class CustomCheat
+    public abstract class CustomCheat
     {
         public abstract string Name { get; }
         public abstract string Description { get; }
         public abstract string Format { get; }
+        public abstract string Category { get; }
 
         public bool Handle(string message)
         {

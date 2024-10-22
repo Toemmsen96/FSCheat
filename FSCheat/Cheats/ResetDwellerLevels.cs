@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class ResetDwellerLevels : CustomCheat
+    internal class ResetDwellerLevels : CustomCommand
     {
         public override string Name => "Reset Dweller Levels";
 
         public override string Description => "Sets Dwellers to level 1";
 
         public override string Format => "/resdwlvl";
+        public override string Category => "Dwellers";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             try{
             /*

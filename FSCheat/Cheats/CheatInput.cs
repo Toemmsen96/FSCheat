@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FSCheat.Cheats
 {
-    internal class CheatInput
+    public class CheatInput
     {
         public string Command { get; private set; }
 

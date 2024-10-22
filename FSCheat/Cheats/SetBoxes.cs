@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class SetBoxes : CustomCheat
+    internal class SetBoxes : CustomCommand
     {
         public override string Name => "Set Lunchboxes Cheat";
 
         public override string Description => "set how many boxes you want";
 
         public override string Format => "/setboxes <amount>";
+        public override string Category => "Resources";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             try{
             if (!(message.Args[0].Length > 0))

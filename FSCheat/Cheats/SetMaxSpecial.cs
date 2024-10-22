@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class SetMaxSpecial : CustomCheat
+    internal class SetMaxSpecial : CustomCommand
     {
         public override string Name => "Max Special Levels";
 
         public override string Description => "Max out all Dwellers special levels";
 
         public override string Format => "/maxspec";
+        public override string Category => "Dwellers";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             try{
                 SpecialStatValues maxSpec = new SpecialStatValues();

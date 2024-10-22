@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class SetPetBoxes : CustomCheat
+    internal class SetPetBoxes : CustomCommand
     {
         public override string Name => "Set PetBoxes Cheat";
 
         public override string Description => "set how many Pet Boxes you want";
 
         public override string Format => "/setmrhandy <amount>";
+        public override string Category => "Resources";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             try{
             if (!(message.Args[0].Length > 0))

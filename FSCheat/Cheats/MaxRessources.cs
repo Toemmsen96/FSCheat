@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class MaxRessources : CustomCheat
+    internal class MaxRessources : CustomCommand
     {
-        public override string Name => "Max Ressources";
+        public override string Name => "Max Resources";
 
         public override string Description => "Toggle for always having power, water and food on max";
 
         public override string Format => "/maxres";
+        public override string Category => "Resources";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             GameResources resources = MonoSingleton<Vault>.Instance.Storage.Resources;
             resources.Power = 9999999f;

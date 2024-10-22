@@ -12,7 +12,7 @@ namespace FSCheat
         public static void DisplayMessage(string message)
         {
             Plugin.logger.LogInfo(message);
-            Plugin.lastDisplayedMessage = message;
+            CTDynamicModMenu.CTDynamicModMenu.Instance.DisplayMessage(message);
         }
     }
 }

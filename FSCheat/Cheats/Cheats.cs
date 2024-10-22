@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {internal class Cheats
     {
-        public static List<CustomCheat> AllCheats { get; } = new List<CustomCheat> {
+        public static List<CustomCommand> AllCheats { get; } = new List<CustomCommand> {
             new SetNuka(),
             new InstaBabyCheat(),
             new MaxLevelDwellers(),

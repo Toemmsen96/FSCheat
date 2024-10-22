@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class MaxLevelDwellers : CustomCheat
+    internal class MaxLevelDwellers : CustomCommand
     {
         public override string Name => "Max Level Dwellers";
 
         public override string Description => "Toggle for making dwellers be max level";
 
         public override string Format => "/maxdwel";
+        public override string Category => "Dwellers";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             try{
             /*

@@ -32,34 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\0Harmony.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\0Harmony.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\0Harmony.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/0Harmony.dll')">Dependencies/0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\Assembly-CSharp.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\Assembly-CSharp.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/Assembly-CSharp.dll')">Dependencies/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/BepInEx.dll')">Dependencies/BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Harmony.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Harmony.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Harmony.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/BepInEx.Harmony.dll')">Dependencies/BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Preloader">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Preloader.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Preloader.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Preloader.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/BepInEx.Preloader.dll')">Dependencies/BepInEx.Preloader.dll</HintPath>
     </Reference>
-        <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath Condition="Exists('..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll')">..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.local\share\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll')">\home\tom\.local\share\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath Condition="Exists('..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll')">..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll')">\home\tom\.steam\debian-installation\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
-      <HintPath Condition="Exists('\home\tom\.local\share\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll')">\home\tom\.local\share\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+   <Reference Include="CTDynamicModMenu">
+      <HintPath Condition="Exists('Dependencies/CTDynamicModMenu.dll')">Dependencies/CTDynamicModMenu.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,33 +58,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.dll</HintPath>
-      <HintPath Condition="Exists('/home/tom/.steam/debian-installation/steamapps/common/Fallout Shelter/FalloutShelter_Data/Managed/UnityEngine.dll')">/home/tom/.steam/debian-installation/steamapps/common/Fallout Shelter/FalloutShelter_Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/UnityEngine.dll')">Dependencies/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath Condition="Exists('..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.CoreModule.dll')">..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Fallout Shelter\FalloutShelter_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <HintPath Condition="Exists('/home/tom/.steam/debian-installation/steamapps/common/Fallout Shelter/FalloutShelter_Data/Managed/UnityEngine.CoreModule.dll')">/home/tom/.steam/debian-installation/steamapps/common/Fallout Shelter/FalloutShelter_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/UnityEngine.CoreModule.dll')">/Dependencies/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patches.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Cheats\Cheats.cs" />
-    <Compile Include="Cheats\SetNuka.cs" />
-    <Compile Include="Cheats\SetQuantum.cs" />
-    <Compile Include="Cheats\SetStimRad.cs" />
-    <Compile Include="Cheats\InstaBabyCheat.cs" />
-    <Compile Include="Cheats\MaxLevelDwellers.cs" />
-    <Compile Include="Cheats\SetBoxes.cs" />
-    <Compile Include="Cheats\SetPetBoxes.cs" />
-    <Compile Include="Cheats\SetMrHandy.cs" />
-    <Compile Include="Cheats\MaxRessources.cs" />
-    <Compile Include="Cheats\FinishAllTrainings.cs" />
-    <Compile Include="Cheats\ResetDwellerLevels.cs" />
-    <Compile Include="Cheats\SetMaxSpecial.cs" />
-    <Compile Include="Cheats\CustomCheat.cs" />
-    <Compile Include="Cheats\CheatInput.cs" />
+    <Compile Include="Cheats\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
