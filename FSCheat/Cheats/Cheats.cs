@@ -20,6 +20,10 @@ namespace FSCheat.Cheats
             new SetQuantum(),
             new SetStimRad(),
             new SetMaxSpecial(),
+            new OverrideWeaponDamage(),
+            new OverPoweredPets(),
+            new InstaAdultCheat(),
+            new CreateRandomDweller(),
             //new ResetDwellerLevels(),
             };
     }

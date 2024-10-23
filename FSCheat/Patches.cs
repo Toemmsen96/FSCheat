@@ -12,14 +12,15 @@ namespace FSCheat
     internal class Patches
     {
 
-        private static GameResources gRInstance;
-        internal static bool nukaCheat = false;
         internal static bool instaBabyCheat = false;
-        internal static bool maxLevelDwellers = false;
         internal static List<Dweller> dwellers = new List<Dweller>();
         internal static List<DwellerExperience> dwellerExperiences = new List<DwellerExperience>();
         internal static List<DwellerStats> dwellerStats = new List<DwellerStats>();
         internal static List<TrainingSlot> trainingSlots = new List<TrainingSlot>();
+        internal static List<DwellerChild> dwellerChildren = new List<DwellerChild>();
+        internal static Dictionary<DwellerChild, Task> growUpTasks = new Dictionary<DwellerChild, Task>();
+        internal static Dictionary<DwellerChild, LivingQuartersRoom> livingQuarters = new Dictionary<DwellerChild, LivingQuartersRoom>();
+        internal static Dictionary<DwellerChild, Dweller> dwellersToGrowUp = new Dictionary<DwellerChild, Dweller>();
         
         [HarmonyPatch(typeof(Application), "get_isEditor")]
         [HarmonyPostfix]
@@ -48,27 +49,6 @@ namespace FSCheat
         */
 
 
-        [HarmonyPatch(typeof(GameResources), "get_Nuka")]
-        [HarmonyPostfix]
-        private static void InfiniteNuka(ref float __result, ref GameResources __instance)
-        {
-            if (nukaCheat){
-            //__result = 999999f;
-            //Plugin.logger.LogInfo("Infinite Nuka enabled");
-            gRInstance = __instance;
-            gRInstance.Nuka = 999999f;
-            //gRInstance.Food = 9999999f;
-            //gRInstance.Water = 9999999f;
-            //gRInstance.Power = 9999999f;
-            gRInstance.StimPack = 99f;
-            gRInstance.RadAway = 99f;
-            gRInstance.Lunchbox = 10f;
-            gRInstance.NukeColaQuantum = 999f;
-            gRInstance.MrHandy = 0f;
-            gRInstance.PetCarrier = 0f;
-            }
-
-        }
 
         [HarmonyPatch(typeof(Dweller), "get_BabyReady")]
         [HarmonyPostfix]
