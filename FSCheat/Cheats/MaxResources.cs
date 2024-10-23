@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CTDynamicModMenu.Commands;
+
 
 namespace FSCheat.Cheats
 {
-    internal class MaxResources : CustomCheat
+    internal class MaxResources : CustomCommand
     {
         public override string Name => "Max Resources";
 
@@ -15,7 +17,7 @@ namespace FSCheat.Cheats
         public override string Format => "/maxres";
         public override string Category => "Resources";
 
-        public override void Execute(CheatInput message)
+        public override void Execute(CommandInput message)
         {
             GameResources resources = MonoSingleton<Vault>.Instance.Storage.Resources;
             resources.Power = 9999999f;
