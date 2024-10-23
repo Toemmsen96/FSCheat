@@ -15,7 +15,7 @@ using CTDynamicModMenu.Commands;
 namespace FSCheat
 {
     [BepInPlugin(modGUID, modName, modVersion)]
-    [BepInDependency ("CTMods.CTDynamicModMenu")]
+    [BepInDependency ("Toemmsen96.CTDynamicModMenu")]
     public class Plugin : BaseUnityPlugin
     {
         private const string modGUID = "toemmsen.FSCheats";
