@@ -61,7 +61,7 @@
       <HintPath Condition="Exists('Dependencies/UnityEngine.dll')">Dependencies/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath Condition="Exists('Dependencies/UnityEngine.CoreModule.dll')">/Dependencies/UnityEngine.CoreModule.dll</HintPath>
+      <HintPath Condition="Exists('Dependencies/UnityEngine.CoreModule.dll')">Dependencies/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
