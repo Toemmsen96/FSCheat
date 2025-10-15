@@ -59,6 +59,38 @@ namespace FSCheat
             }
         }
 
+        [HarmonyPatch(typeof(PersistenceManager), "Decrypt")]
+        [HarmonyPostfix]
+        private static void DecryptPostfix(ref string data)
+        {
+            Utils.DisplayMessage("Game Decrypted:" + data);
+        }
+
+        [HarmonyPatch(typeof(StringCipher), "Decrypt")]
+        [HarmonyPostfix]
+        private static void CyDecryptPostfix(ref string cipherText, ref string passPhrase, ref string __result)
+        {
+            Utils.DisplayMessage("Game Decrypted:" + __result + " with passphrase: " + passPhrase);
+        }
+
+        [HarmonyPatch(typeof(StringCipher), "GetVectorBytes")]
+        [HarmonyPostfix]
+        private static void CyGetVectorBytesPostfix(ref byte[] __result)
+        {
+            Utils.DisplayMessage("Vector Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
+            Utils.DisplayMessage("Vector Bytes (IV) (hexdump):" + BitConverter.ToString(__result).Replace("-", " "));
+        }
+        
+        [HarmonyPatch(typeof(StringCipher), "GetPassphraseBytes")]
+        [HarmonyPostfix]
+        private static void CyGetPassphraseBytesPostfix(ref byte[] __result)
+        {
+            Utils.DisplayMessage("Passphrase Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
+            Utils.DisplayMessage("Passphrase Bytes (Key) (hex):" + BitConverter.ToString(__result).Replace("-", " "));
+        }
+        
+        
+
         [HarmonyPatch(typeof(Dweller), "Awake")]
         [HarmonyPostfix]
         private static void AddDwellerToList(ref Dweller __instance, ref string ___m_Name){
