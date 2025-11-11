@@ -1,76 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED68F0F5-DB44-4857-A5E2-F77BD270C0C9}</ProjectGuid>
+    <!-- Target modern .NET as requested -->
+    <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FSCheat</RootNamespace>
     <AssemblyName>FSCheat</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <!-- Keep existing AssemblyInfo.cs rather than auto-generating attributes -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\\Debug\\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\\Release\\</OutputPath>
   </PropertyGroup>
+
+  <!-- Keep project references to the local dependency DLLs via HintPath. These are external game/Unity libs and likely not available as NuGet. -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath Condition="Exists('Dependencies/0Harmony.dll')">Dependencies/0Harmony.dll</HintPath>
+      <HintPath>Dependencies/0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath Condition="Exists('Dependencies/Assembly-CSharp.dll')">Dependencies/Assembly-CSharp.dll</HintPath>
+      <HintPath>Dependencies/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath Condition="Exists('Dependencies/BepInEx.dll')">Dependencies/BepInEx.dll</HintPath>
+      <HintPath>Dependencies/BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath Condition="Exists('Dependencies/BepInEx.Harmony.dll')">Dependencies/BepInEx.Harmony.dll</HintPath>
+      <HintPath>Dependencies/BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Preloader">
-      <HintPath Condition="Exists('Dependencies/BepInEx.Preloader.dll')">Dependencies/BepInEx.Preloader.dll</HintPath>
+      <HintPath>Dependencies/BepInEx.Preloader.dll</HintPath>
     </Reference>
-   <Reference Include="CTDynamicModMenu">
-      <HintPath Condition="Exists('Dependencies/CTDynamicModMenu.dll')">Dependencies/CTDynamicModMenu.dll</HintPath>
+    <Reference Include="CTDynamicModMenu">
+      <HintPath>Dependencies/CTDynamicModMenu.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath Condition="Exists('Dependencies/UnityEngine.dll')">Dependencies/UnityEngine.dll</HintPath>
+      <HintPath>Dependencies/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath Condition="Exists('Dependencies/UnityEngine.CoreModule.dll')">Dependencies/UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>Dependencies/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <!-- Source files are included implicitly by the SDK; explicit Compile entries removed to avoid duplicates -->
+
+  <!-- Keep path.txt available in output if needed by the plugin at runtime -->
   <ItemGroup>
-    <Compile Include="Patches.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="Cheats\*.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="path.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
