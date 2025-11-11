@@ -24,6 +24,8 @@ namespace FSCheat.Cheats
             new OverPoweredPets(),
             new InstaAdultCheat(),
             new CreateRandomDweller(),
+            new DecryptGameSaves(),
+            new EncryptGameSaves(),
             //new ResetDwellerLevels(),
             };
     }

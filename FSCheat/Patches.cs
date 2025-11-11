@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using Bhvr.UnityShared;
@@ -21,6 +22,9 @@ namespace FSCheat
         internal static Dictionary<DwellerChild, Task> growUpTasks = new Dictionary<DwellerChild, Task>();
         internal static Dictionary<DwellerChild, LivingQuartersRoom> livingQuarters = new Dictionary<DwellerChild, LivingQuartersRoom>();
         internal static Dictionary<DwellerChild, Dweller> dwellersToGrowUp = new Dictionary<DwellerChild, Dweller>();
+        internal static byte[] keyBytes;
+        internal static byte[] ivBytes;
+        internal static string decryptPassphrase;
         
         [HarmonyPatch(typeof(Application), "get_isEditor")]
         [HarmonyPostfix]
@@ -63,14 +67,15 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void DecryptPostfix(ref string data)
         {
-            Utils.DisplayMessage("Game Decrypted:" + data);
+            Utils.DisplayMessage("Persistence Manager Decrypt:" + data);
         }
 
         [HarmonyPatch(typeof(StringCipher), "Decrypt")]
         [HarmonyPostfix]
         private static void CyDecryptPostfix(ref string cipherText, ref string passPhrase, ref string __result)
         {
-            Utils.DisplayMessage("Game Decrypted:" + __result + " with passphrase: " + passPhrase);
+            Utils.DisplayMessage("StringCipher Decrypt:" + __result + " with passphrase: " + passPhrase);
+            decryptPassphrase = passPhrase;
         }
 
         [HarmonyPatch(typeof(StringCipher), "GetVectorBytes")]
@@ -79,6 +84,7 @@ namespace FSCheat
         {
             Utils.DisplayMessage("Vector Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
             Utils.DisplayMessage("Vector Bytes (IV) (hexdump):" + BitConverter.ToString(__result).Replace("-", " "));
+            ivBytes = __result;
         }
         
         [HarmonyPatch(typeof(StringCipher), "GetPassphraseBytes")]
@@ -87,6 +93,7 @@ namespace FSCheat
         {
             Utils.DisplayMessage("Passphrase Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
             Utils.DisplayMessage("Passphrase Bytes (Key) (hex):" + BitConverter.ToString(__result).Replace("-", " "));
+            keyBytes = __result;
         }
         
         
