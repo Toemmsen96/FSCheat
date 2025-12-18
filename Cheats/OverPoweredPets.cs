@@ -18,11 +18,14 @@ namespace FSCheat.Cheats
 
         public override string Format => "/overpoweredpets";
         public override string Category => "Pets";
+        public override bool IsToggle => true;
+        public override bool IsEnabled => isOverriding;
         private static bool isOverriding = false;
 
         public override void Execute(CommandInput message)
         {
             isOverriding = !isOverriding;
+            IsEnabled = isOverriding;
             Utils.DisplayMessage("Overpowered Pets Override: " + (isOverriding ? "Enabled" : "Disabled"));
             
         }

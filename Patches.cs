@@ -13,7 +13,6 @@ namespace FSCheat
     internal class Patches
     {
 
-        internal static bool instaBabyCheat = false;
         internal static List<Dweller> dwellers = new List<Dweller>();
         internal static List<DwellerExperience> dwellerExperiences = new List<DwellerExperience>();
         internal static List<DwellerStats> dwellerStats = new List<DwellerStats>();
@@ -58,7 +57,8 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void BabyReady(ref bool __result, ref Dweller __instance)
         {
-            if (instaBabyCheat){
+            if (Plugin.instaBabyCheatEnabled)
+            {
             __result = true;
             }
         }
@@ -67,14 +67,14 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void DecryptPostfix(ref string data)
         {
-            Utils.DisplayMessage("Persistence Manager Decrypt:" + data);
+            Plugin.logger.LogInfo("Persistence Manager Decrypt: " + data);
         }
 
         [HarmonyPatch(typeof(StringCipher), "Decrypt")]
         [HarmonyPostfix]
         private static void CyDecryptPostfix(ref string cipherText, ref string passPhrase, ref string __result)
         {
-            Utils.DisplayMessage("StringCipher Decrypt:" + __result + " with passphrase: " + passPhrase);
+            Plugin.logger.LogInfo("StringCipher Decrypt:" + __result + " with passphrase: " + passPhrase);
             decryptPassphrase = passPhrase;
         }
 
@@ -82,8 +82,8 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void CyGetVectorBytesPostfix(ref byte[] __result)
         {
-            Utils.DisplayMessage("Vector Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
-            Utils.DisplayMessage("Vector Bytes (IV) (hexdump):" + BitConverter.ToString(__result).Replace("-", " "));
+            Plugin.logger.LogInfo("Vector Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
+            Plugin.logger.LogInfo("Vector Bytes (IV) (hexdump):" + BitConverter.ToString(__result).Replace("-", " "));
             ivBytes = __result;
         }
         
@@ -91,8 +91,8 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void CyGetPassphraseBytesPostfix(ref byte[] __result)
         {
-            Utils.DisplayMessage("Passphrase Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
-            Utils.DisplayMessage("Passphrase Bytes (Key) (hex):" + BitConverter.ToString(__result).Replace("-", " "));
+            Plugin.logger.LogInfo("Passphrase Bytes:" + BitConverter.ToString(__result) + " Length: " + __result.Length);
+            Plugin.logger.LogInfo("Passphrase Bytes (Key) (hex):" + BitConverter.ToString(__result).Replace("-", " "));
             keyBytes = __result;
         }
         
@@ -102,7 +102,7 @@ namespace FSCheat
         [HarmonyPostfix]
         private static void AddDwellerToList(ref Dweller __instance, ref string ___m_Name){
             dwellers.Add(__instance);
-            Utils.DisplayMessage("Dweller added to list: "+ ___m_Name);
+            Plugin.logger.LogInfo("Dweller added to list: "+ ___m_Name);
         }
 
         [HarmonyPatch(typeof(DwellerExperience))]
@@ -112,7 +112,7 @@ namespace FSCheat
         private static void DwellerExperienceConstructorPatch(DwellerExperience __instance, Dweller dweller)
         {
             dwellerExperiences.Add(__instance);
-            Utils.DisplayMessage("DwellerExperience added to list: "+ dweller);
+            Plugin.logger.LogInfo("DwellerExperience added to list: "+ dweller);
         }
 
         [HarmonyPatch(typeof(DwellerStats))]
@@ -122,7 +122,7 @@ namespace FSCheat
         private static void DwellerStatsConstructorPatch(DwellerStats __instance, Dweller inDweller)
         {
             dwellerStats.Add(__instance);
-            Utils.DisplayMessage("DwellerStats added to list: "+ inDweller);
+            Plugin.logger.LogInfo("DwellerStats added to list: "+ inDweller);
         }
 
         [HarmonyPatch(typeof(TrainingSlot))]
@@ -132,8 +132,43 @@ namespace FSCheat
         private static void TrainingSlotGetRef(TrainingSlot __instance, TrainingRoom room)
         {
             trainingSlots.Add(__instance);
-            Utils.DisplayMessage("TrainingSlot added to list: "+ room);
+            Plugin.logger.LogInfo("TrainingSlot added to list: "+ room);
         }
+
+        [HarmonyPatch(typeof(SeasonPassDataManager), "ImportSaveDataInternal")]
+        [HarmonyPostfix]
+        private static void SeasonPassPremiumPlus(SeasonPassDataManager __instance)
+        {
+            if (!Plugin.overridePremiumPlusPass) return;
+            __instance.m_isPremium = true;
+            __instance.m_isPremiumPlus = true;
+            Plugin.logger.LogInfo("Season Pass Premium Plus field set to true");
+        }
+
+        [HarmonyPatch(typeof(DwellerManager), "get_MaximumDwellerCount")]
+        [HarmonyPostfix]
+        private static void MaxDwellersPatch(ref int __result)
+        {
+            if (!Plugin.patchOverrideMaxDwellers) return;
+            __result = 2147483647;
+        }
+
+        [HarmonyPatch(typeof(DwellerManager), "get_VaultIsWithMaxPopulation")]
+        [HarmonyPostfix]
+        private static void MaxDwellersPatch2(ref bool __result)
+        {
+            if (!Plugin.patchOverrideMaxDwellers) return;
+            __result = false;
+        }
+
+        [HarmonyPatch(typeof(Vault), "CanAddDwellers")]
+        [HarmonyPostfix]
+        private static void MaxDwellersPatch3(ref bool __result)
+        {
+            if (!Plugin.patchOverrideLivingQuarters) return;
+            __result = true;
+        }
+
 
 
         /*

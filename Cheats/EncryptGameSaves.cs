@@ -31,14 +31,14 @@ namespace FSCheat.Cheats
                 // Determine save files
                 if (!Directory.Exists(savesFolder))
                 {
-                    Utils.DisplayMessage("Save folder not found: " + savesFolder);
+                    Utils.DisplayError("Save folder not found: " + savesFolder);
                     return;
                 }
 
                 var saveFiles = Directory.GetFiles(savesFolder, "*.sav");
                 if (saveFiles.Length == 0)
                 {
-                    Utils.DisplayMessage("No save (.sav) files found in: " + savesFolder);
+                    Utils.DisplayError("No save (.sav) files found in: " + savesFolder);
                     return;
                 }
 
@@ -83,7 +83,7 @@ namespace FSCheat.Cheats
 
                 if (inputFiles.Length == 0)
                 {
-                    Utils.DisplayMessage("No input decrypted files found. Provide a file, a directory, or use the default decrypted_save_{n}.json files in: " + savesFolder);
+                    Utils.DisplayError("No input decrypted files found. Provide a file, a directory, or use the default decrypted_save_{n}.json files in: " + savesFolder);
                     return;
                 }
 
@@ -102,14 +102,14 @@ namespace FSCheat.Cheats
                         }
                         catch (Exception exCopy)
                         {
-                            Utils.DisplayMessage("Warning: failed to backup " + f + " -> " + exCopy.Message);
+                            Utils.DisplayError("Warning: failed to backup " + f + " -> " + exCopy.Message);
                         }
                     }
                     Utils.DisplayMessage("Backed up existing .sav files to: " + backupDir);
                 }
                 catch (Exception ex)
                 {
-                    Utils.DisplayMessage("Warning: could not create backup directory: " + ex.Message);
+                    Utils.DisplayError("Warning: could not create backup directory: " + ex.Message);
                     return;
                 }
 
@@ -121,7 +121,7 @@ namespace FSCheat.Cheats
                     
                     if (!File.Exists(inputForThis))
                     {
-                        Utils.DisplayMessage($"Input file does not exist: {inputForThis}, skipping.");
+                        Utils.DisplayError($"Input file does not exist: {inputForThis}, skipping.");
                         continue;
                     }
 
@@ -134,7 +134,7 @@ namespace FSCheat.Cheats
                     }
                     catch (Exception exRead)
                     {
-                        Utils.DisplayMessage($"Failed to read {inputForThis}: {exRead.Message}");
+                        Utils.DisplayError($"Failed to read {inputForThis}: {exRead.Message}");
                         continue;
                     }
 
@@ -163,14 +163,14 @@ namespace FSCheat.Cheats
                     {
                         if (string.IsNullOrEmpty(Patches.decryptPassphrase))
                         {
-                            Utils.DisplayMessage("✗ Passphrase not captured yet. Load a save in-game first before encrypting.");
+                            Utils.DisplayError("✗ Passphrase not captured yet. Load a save in-game first before encrypting.");
                             continue;
                         }
                         encryptedData = StringCipher.Encrypt(compact, Patches.decryptPassphrase);
                     }
                     catch (Exception exEncrypt)
                     {
-                        Utils.DisplayMessage($"✗ Failed to encrypt {inputForThis}: {exEncrypt.Message}");
+                        Utils.DisplayError($"✗ Failed to encrypt {inputForThis}: {exEncrypt.Message}");
                         continue;
                     }
                     
@@ -185,7 +185,7 @@ namespace FSCheat.Cheats
                     }
                     catch (Exception exWrite)
                     {
-                        Utils.DisplayMessage($"✗ Failed to write {outPath}: {exWrite.Message}");
+                        Utils.DisplayError($"✗ Failed to write {outPath}: {exWrite.Message}");
                     }
                 }
 
@@ -193,7 +193,7 @@ namespace FSCheat.Cheats
             }
             catch (Exception e)
             {
-                Utils.DisplayMessage("Error: " + e.Message);
+                Utils.DisplayError("Error: " + e.Message);
             }
             
         }

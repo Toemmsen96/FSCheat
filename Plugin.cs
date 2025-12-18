@@ -15,8 +15,8 @@ using CTDynamicModMenu.Commands;
 namespace FSCheat
 {
     [BepInPlugin(modGUID, modName, modVersion)]
-    [BepInDependency("CTMods.CTDynamicModMenu")]
-    public class Plugin : BaseUnityPlugin
+    [BepInDependency("Toemmsen96.CTDynamicModMenu")]
+    public partial class Plugin : BaseUnityPlugin
     {
         private const string modGUID = "toemmsen.FSCheats";
         private const string modName = "FSCheats";
@@ -32,6 +32,7 @@ namespace FSCheat
                 instance = this;
 
             }
+            InitConfig();
 
             harmony.PatchAll(typeof(Patches));
             harmony.PatchAll(typeof(Plugin));

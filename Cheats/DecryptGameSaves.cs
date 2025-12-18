@@ -36,14 +36,14 @@ namespace FSCheat.Cheats
                 // Ensure the save folder exists
                 if (!Directory.Exists(savesFolder))
                 {
-                    Utils.DisplayMessage("Save folder not found: " + savesFolder);
+                    Utils.DisplayError("Save folder not found: " + savesFolder);
                     return;
                 }
 
                 var saveFiles = Directory.GetFiles(savesFolder, "*.sav");
                 if (saveFiles.Length == 0)
                 {
-                    Utils.DisplayMessage("No save (.sav) files found in: " + savesFolder);
+                    Utils.DisplayError("No save (.sav) files found in: " + savesFolder);
                     return;
                 }
 
@@ -85,7 +85,7 @@ namespace FSCheat.Cheats
             }
             catch (Exception e)
             {
-                Utils.DisplayMessage("Error: " + e.Message);
+                Utils.DisplayError("Message: " + e.Message);
             }
 
             

@@ -19,8 +19,19 @@ namespace FSCheat.Cheats
         public override void Execute(CommandInput message)
         {
             GameResources resources = MonoSingleton<Vault>.Instance.Storage.Resources;
-            resources.StimPack = float.Parse(message.Args[0]);
-            resources.RadAway = float.Parse(message.Args[0]);
+            if (!(message.Args[0].Length > 0))
+            {
+                Utils.DisplayError("Message: Please specify an amount of Stimpacks and Radaways to set.");
+                return;
+            }
+            float amount = float.Parse(message.Args[0]);
+            if (amount <= 0)
+            {
+                Utils.DisplayError("Message: Amount cannot be negative.");
+                return;
+            }
+            resources.StimPack = amount;
+            resources.RadAway = amount;
             Utils.DisplayMessage("StimRad Cheat: Set to " + message.Args[0]);
         }
     }

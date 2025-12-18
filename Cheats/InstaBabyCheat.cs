@@ -15,11 +15,14 @@ namespace FSCheat.Cheats
 
         public override string Format => "/instababy";
         public override string Category => "Dwellers";
+        public override bool IsToggle => true;
+        public override bool IsEnabled => Plugin.instaBabyCheatEnabled;
 
         public override void Execute(CommandInput message)
         {
-            Patches.instaBabyCheat = !Patches.instaBabyCheat;
-            Utils.DisplayMessage("Instababy Cheat: " + (Patches.instaBabyCheat ? "Enabled" : "Disabled"));
+            Plugin.instaBabyCheatEnabled = !Plugin.instaBabyCheatEnabled;
+            IsEnabled = Plugin.instaBabyCheatEnabled;
+            Utils.DisplayMessage("Instababy Cheat: " + (Plugin.instaBabyCheatEnabled ? "Enabled" : "Disabled"));
         }
     }
 }

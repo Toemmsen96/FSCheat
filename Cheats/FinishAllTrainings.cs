@@ -22,12 +22,11 @@ namespace FSCheat.Cheats
             try{
             foreach(var trainingslot in Patches.trainingSlots){
                 trainingslot.FinishTraining();
-                Utils.DisplayMessage("Finished Training");
             }
             }
             catch (Exception e)
             {
-                Utils.DisplayMessage("Error: " + e.Message);
+                Utils.DisplayError("Message: " + e.Message);
             }
         }
     }

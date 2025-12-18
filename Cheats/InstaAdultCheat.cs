@@ -15,13 +15,16 @@ namespace FSCheat.Cheats
         public override string Description => "Toggle for making children become adults instantly";
 
         public override string Format => "/instaadult";
+        public override bool IsToggle => true;
         public override string Category => "Dwellers";
-        private static bool instaAdultCheat = false;
+        public override bool IsEnabled => Plugin.instaAdultCheatEnabled;
+
 
         public override void Execute(CommandInput message)
         {
-            instaAdultCheat = !instaAdultCheat;
-            Utils.DisplayMessage("Instaadult Cheat: " + (instaAdultCheat ? "Enabled" : "Disabled"));
+            Plugin.instaAdultCheatEnabled = !Plugin.instaAdultCheatEnabled;
+            IsEnabled = Plugin.instaAdultCheatEnabled;
+            Utils.DisplayMessage("Instaadult Cheat: " + (Plugin.instaAdultCheatEnabled ? "Enabled" : "Disabled"));
 
         }
 
@@ -29,7 +32,7 @@ namespace FSCheat.Cheats
         [HarmonyPostfix]
         public static void GetChildhoodDurationPostfix(ref float __result)
         {
-            if (instaAdultCheat)
+            if (Plugin.instaAdultCheatEnabled)
             {
                 __result = 0f;
             }

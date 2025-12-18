@@ -26,6 +26,7 @@ namespace FSCheat.Cheats
             new CreateRandomDweller(),
             new DecryptGameSaves(),
             new EncryptGameSaves(),
+            new SetPokerchip(),
             //new ResetDwellerLevels(),
             };
     }

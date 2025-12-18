@@ -16,6 +16,7 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 - **Set Lunchboxes** - Get as many lunchboxes as you want
 - **Set Pet Carriers** - Control your pet carrier count
 - **Set Mr. Handy** - Add Mr. Handy robots to your vault
+- **Set Pokerchips** - Add Pokerchips to your vault
 
 ### Dweller Management
 - **Instant Baby** - Speed up pregnancy and childbirth
@@ -34,6 +35,11 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 ### Utilities
 - **Decrypt Game Saves** - Decrypt your save files for backup/editing
 - **Encrypt Game Saves** - Re-encrypt save files after modifications
+
+### Patches
+- **Enable Premium Plus** - Enables Premium Plus Pass for free
+- **Disable 200 Dweller limit** - Disables dweller limit for vault
+- **Disable Living Quarters limit** - Disables Dweller limit for Living Quarters
 
 ## 📋 Requirements
 

@@ -34,7 +34,7 @@ namespace FSCheat.Cheats
             }
             catch (Exception e)
             {
-                Utils.DisplayMessage("Error: " + e.Message);
+                Utils.DisplayError("Message: " + e.Message);
             }
         }
     }

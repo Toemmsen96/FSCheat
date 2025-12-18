@@ -31,7 +31,7 @@ namespace FSCheat.Cheats
                 Utils.DisplayMessage("Added: " + message.Args[0]+ " MrHandy boxes");
             }}
             catch (Exception e){
-                Utils.DisplayMessage("Error: " + e.Message);
+                Utils.DisplayError("Message: " + e.Message);
             }
 
         }

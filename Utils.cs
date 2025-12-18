@@ -14,5 +14,10 @@ namespace FSCheat
             Plugin.logger.LogInfo(message);
             CTDynamicModMenu.CTDynamicModMenu.Instance.DisplayMessage(message);
         }
+        public static void DisplayError(string message)
+        {
+            Plugin.logger.LogError(message);
+            CTDynamicModMenu.CTDynamicModMenu.Instance.DisplayError(message);
+        }
     }
 }
