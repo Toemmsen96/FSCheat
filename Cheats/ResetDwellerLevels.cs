@@ -33,8 +33,7 @@ namespace FSCheat.Cheats
             }
             */
             foreach(var DwellerExperience in Patches.dwellerExperiences){
-                DwellerExperience.LevelUP();
-                DwellerExperience.AddExp(1000000f);
+                DwellerExperience.SetLevelAndMinexp(1);
             }
             }
             catch (Exception e)

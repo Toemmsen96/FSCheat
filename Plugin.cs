@@ -39,7 +39,7 @@ namespace FSCheat
             harmony.PatchAll(typeof(Cheats.OverrideWeaponDamage));
             harmony.PatchAll(typeof(Cheats.OverPoweredPets));
             harmony.PatchAll(typeof(Cheats.InstaAdultCheat));
-            
+            harmony.PatchAll(typeof(Cheats.OverrideStorageLimit));            
             logger.LogWarning((object)"\r\n" +
                 "  ______                                                                         \r\n" +
                 " /_  __/  ____   ___    ____ ___    ____ ___    _____  ___    ____    _____      \r\n" +

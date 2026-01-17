@@ -16,31 +16,37 @@ namespace FSCheat.Cheats
         public override string Format => "/maxdwel";
         public override string Category => "Dwellers";
 
-        public override void Execute(CommandInput message)
+        public override async void Execute(CommandInput message)
+        {
+             SlowlyLevelAsync(100);
+        }
+        private async void SlowlyLevelAsync(int pauseMilliseconds)
         {
             try{
-            /*
-            foreach (var dweller in Patches.dwellers)
-            {
-                Utils.DisplayMessage("Maxing out dweller: " + dweller.Name);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Agility);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Charisma);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Endurance);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Intelligence);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Luck);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Perception);
-                dweller.DebugLevelUpFromTrainingRoom(ESpecialStat.Strength);
-            }
-            */
-            foreach(var DwellerExperience in Patches.dwellerExperiences){
-                DwellerExperience.LevelUP();
-                DwellerExperience.AddExp(1000000f);
-            }
+                bool areMaxed = false;
+                while(!areMaxed){
+                    int leveledCount = 0;
+                    foreach(var DwellerExperience in Patches.dwellerExperiences){
+                        if (DwellerExperience.CurrentLevel >= 50) {
+                            Utils.DisplayMessage("Dweller " + DwellerExperience.ToString() + " is already max level.");
+                            continue;
+                        }
+                        DwellerExperience.LevelUP();
+                        DwellerExperience.AddExp(float.MaxValue);
+                        leveledCount++;
+                        await System.Threading.Tasks.Task.Delay(pauseMilliseconds);
+                    }
+                    if (leveledCount == 0)
+                    {
+                        areMaxed = true;
+                    }
+                }
+                Utils.DisplayMessage("All Dwellers are now max level.");
             }
             catch (Exception e)
             {
                 Utils.DisplayError("Message: " + e.Message);
             }
-        }
+        } 
     }
 }

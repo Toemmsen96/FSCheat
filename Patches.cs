@@ -24,6 +24,9 @@ namespace FSCheat
         internal static byte[] keyBytes;
         internal static byte[] ivBytes;
         internal static string decryptPassphrase;
+        private static Color legendaryColor = Color.magenta;
+        private static Color normalColor = Color.green;
+        private static Color rareColor = Color.cyan;
         
         [HarmonyPatch(typeof(Application), "get_isEditor")]
         [HarmonyPostfix]
@@ -167,6 +170,44 @@ namespace FSCheat
         {
             if (!Plugin.patchOverrideLivingQuarters) return;
             __result = true;
+        }
+
+        [HarmonyPatch(typeof(ItemParameters), "get_LegendaryCardGlow")]
+        [HarmonyPostfix]
+        private static void LegendaryGlowPatch(ref Color __result)
+        {
+            __result = legendaryColor;
+        }
+        [HarmonyPatch(typeof(ItemParameters), "get_NormalCardGlow")]
+        [HarmonyPostfix]
+        private static void NormalGlowPatch(ref Color __result)
+        {
+            __result = normalColor;
+        }
+        [HarmonyPatch(typeof(ItemParameters), "get_RareCardGlow")]
+        [HarmonyPostfix]
+        private static void RareGlowPatch(ref Color __result)
+        {
+            __result = rareColor;
+        }
+
+        [HarmonyPatch(typeof(ItemParameters), "get_LegendaryCardBorder")]
+        [HarmonyPostfix]
+        private static void LegendaryBorderPatch(ref Color __result)
+        {
+            __result = legendaryColor;
+        }
+        [HarmonyPatch(typeof(ItemParameters), "get_NormalCardBorder")]
+        [HarmonyPostfix]
+        private static void NormalBorderPatch(ref Color __result)
+        {
+            __result = normalColor;
+        }
+        [HarmonyPatch(typeof(ItemParameters), "get_RareCardBorder")]
+        [HarmonyPostfix]
+        private static void RareBorderPatch(ref Color __result)
+        {
+            __result = rareColor;
         }
 
 
