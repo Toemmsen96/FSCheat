@@ -138,14 +138,22 @@ namespace FSCheat
             Plugin.logger.LogInfo("TrainingSlot added to list: "+ room);
         }
 
-        [HarmonyPatch(typeof(SeasonPassDataManager), "ImportSaveDataInternal")]
-        [HarmonyPostfix]
-        private static void SeasonPassPremiumPlus(SeasonPassDataManager __instance)
+        [HarmonyPatch(typeof(BaseSeasonDataManager), "ImportSaveData")]
+        [HarmonyPrefix]
+        private static void SeasonPassPremiumPlus(ref Dictionary<string, object> data)
         {
             if (!Plugin.overridePremiumPlusPass) return;
             try{
-            //__instance.m_isPremium = true;
-            //__instance.m_isPremiumPlus = true;
+            if (data.ContainsKey("isPremium")){
+                data["isPremium"] = true;
+            } else {
+                data.Add("isPremium", true);
+            };
+            if (data.ContainsKey("isPremiumPlus")){
+                data["isPremiumPlus"] = true;
+            } else {
+                data.Add("isPremiumPlus", true);
+            };
             Plugin.logger.LogInfo("Season Pass Premium Plus field set to true");
             } catch (Exception e){
                 Plugin.logger.LogError("Error setting Season Pass Premium Plus field: " + e.Message);
