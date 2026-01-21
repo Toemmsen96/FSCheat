@@ -143,9 +143,13 @@ namespace FSCheat
         private static void SeasonPassPremiumPlus(SeasonPassDataManager __instance)
         {
             if (!Plugin.overridePremiumPlusPass) return;
-            __instance.m_isPremium = true;
-            __instance.m_isPremiumPlus = true;
+            try{
+            //__instance.m_isPremium = true;
+            //__instance.m_isPremiumPlus = true;
             Plugin.logger.LogInfo("Season Pass Premium Plus field set to true");
+            } catch (Exception e){
+                Plugin.logger.LogError("Error setting Season Pass Premium Plus field: " + e.Message);
+            }
         }
 
         [HarmonyPatch(typeof(DwellerManager), "get_MaximumDwellerCount")]
