@@ -27,8 +27,9 @@ namespace FSCheat.Cheats
             new DecryptGameSaves(),
             new EncryptGameSaves(),
             new SetPokerchip(),
-            new UnlockAllRecipes(),
+            //new UnlockAllRecipes(),
             new OverrideStorageLimit(),
+            //new OverridePetLimit(),
             new ResetDwellerLevels(),
             };
     }
