@@ -1,6 +1,5 @@
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
-using ZenFulcrum.EmbeddedBrowser;
 
 namespace FSCheat.Cheats
 {
@@ -15,6 +14,8 @@ namespace FSCheat.Cheats
         public override bool IsToggle => true;
         private static bool overrideOn = true;
         public override bool IsEnabled => overrideOn;
+        public static int maxResourcesCount = 1073741823;
+        public static int maxItemCount = 1073741823;
 
         public override void Execute(CommandInput message)
         {
@@ -27,8 +28,8 @@ namespace FSCheat.Cheats
         {
             if (__instance is VaultInventory && overrideOn)
             {
-                count = 1073741823;
-                ___m_itemCountMax = 1073741823;
+                count = maxItemCount;
+                ___m_itemCountMax = maxItemCount;
                 Utils.DisplayMessage("Overriding item storage limit to max value");
                 //count = 1073741823;
             }
@@ -40,7 +41,7 @@ namespace FSCheat.Cheats
             if (overrideOn)
             {
                 Utils.DisplayMessage("Overriding storage limit to max value");
-                ___m_maxResources += new GameResources(2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f, 2.1474836E+09f);
+                ___m_maxResources += new GameResources(maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount);
             }
         }
     }

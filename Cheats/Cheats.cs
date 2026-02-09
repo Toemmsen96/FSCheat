@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
@@ -13,7 +9,7 @@ namespace FSCheat.Cheats
             new InstaBabyCheat(),
             new MaxLevelDwellers(),
             new FinishAllTrainings(),
-            new MaxRessources(),
+            new MaxResources(),
             new SetBoxes(),
             new SetMrHandy(),
             new SetPetBoxes(),
@@ -31,6 +27,8 @@ namespace FSCheat.Cheats
             new OverrideStorageLimit(),
             //new OverridePetLimit(),
             new ResetDwellerLevels(),
+            new SetResources(),
+            new SetStorageLimit(),
             };
     }
 }

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class MaxRessources : CustomCommand
+    internal class MaxResources : CustomCommand
     {
         public override string Name => "Max Resources";
 
@@ -19,10 +14,10 @@ namespace FSCheat.Cheats
         public override void Execute(CommandInput message)
         {
             GameResources resources = MonoSingleton<Vault>.Instance.Storage.Resources;
-            resources.Power = 9999999f;
-            resources.Water = 9999999f;
-            resources.Food = 9999999f;
-            Utils.DisplayMessage("Max Ressources Cheat: Enabled");
+            resources.Power = 2.1474836E+09f;
+            resources.Water = 2.1474836E+09f;
+            resources.Food = 2.1474836E+09f;
+            Utils.DisplayMessage("Max Resources Cheat: Enabled");
         }
     }
 }

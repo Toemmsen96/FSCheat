@@ -1,6 +1,5 @@
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
-using ZenFulcrum.EmbeddedBrowser;
 
 namespace FSCheat.Cheats
 {

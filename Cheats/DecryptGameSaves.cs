@@ -3,7 +3,6 @@
 using System;
 using System.IO;
 using CTDynamicModMenu.Commands;
-using Microsoft.Win32;
 using MiniJSON;
 
 namespace FSCheat.Cheats
