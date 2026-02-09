@@ -10,6 +10,7 @@
     <Deterministic>true</Deterministic>
     <!-- Keep existing AssemblyInfo.cs rather than auto-generating attributes -->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
