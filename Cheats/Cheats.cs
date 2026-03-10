@@ -31,6 +31,7 @@ namespace FSCheat.Cheats
             new SetStorageLimit(),
             new OverrideMaxDwellers(),
             new OverridePremiumPlusPass(),
+            new SetUltracite(),
             };
     }
 }
