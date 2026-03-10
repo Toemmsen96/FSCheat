@@ -4,9 +4,9 @@ namespace FSCheat.Cheats
 {
     internal class SetPokerchip : CustomCommand
     {
-        public override string Name => "Pokerchip Cheat";
+        public override string Name => "Set Pokerchips";
 
-        public override string Description => "Set Pokerchip to specified amount";
+        public override string Description => "Set Pokerchips to specified amount";
         public override string Format => "/pokerchip <amount>";
         public override string Category => "Resources";
 

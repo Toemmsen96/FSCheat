@@ -40,7 +40,9 @@ namespace FSCheat
             harmony.PatchAll(typeof(Cheats.InstaBabyCheat));
             harmony.PatchAll(typeof(Cheats.OverrideStorageLimit));
             harmony.PatchAll(typeof(Cheats.OverrideMaxDwellers));
-            harmony.PatchAll(typeof(Cheats.OverridePremiumPlusPass));            
+            harmony.PatchAll(typeof(Cheats.OverridePremiumPlusPass));
+            harmony.PatchAll(typeof(Cheats.ResetDwellerLevels));
+            harmony.PatchAll(typeof(Cheats.MaxHappyDwellers));         
             logger.LogWarning((object)"\r\n" +
                 "  ______                                                                         \r\n" +
                 " /_  __/  ____   ___    ____ ___    ____ ___    _____  ___    ____    _____      \r\n" +

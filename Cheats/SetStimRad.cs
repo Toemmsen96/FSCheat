@@ -4,7 +4,7 @@ namespace FSCheat.Cheats
 {
     internal class SetStimRad : CustomCommand
     {
-        public override string Name => "Set Stimpacks and Radaways Cheat";
+        public override string Name => "Set Stimpacks and Radaways";
 
         public override string Description => "Set Stimpacks and Radaways to specified amount";
 
@@ -27,7 +27,7 @@ namespace FSCheat.Cheats
             }
             resources.StimPack = amount;
             resources.RadAway = amount;
-            Utils.DisplayMessage("StimRad Cheat: Set to " + message.Args[0]);
+            Utils.DisplayMessage("Stimpacks and Radaways: Set to " + message.Args[0]);
         }
     }
 }

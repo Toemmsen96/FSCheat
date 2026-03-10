@@ -5,33 +5,44 @@ namespace FSCheat.Cheats
 {internal class Cheats
     {
         public static List<CustomCommand> AllCheats { get; } = new List<CustomCommand> {
+
+            // Resources
             new SetNuka(),
-            new InstaBabyCheat(),
-            new MaxLevelDwellers(),
-            new FinishAllTrainings(),
-            new MaxResources(),
-            new SetBoxes(),
-            new SetMrHandy(),
-            new SetPetBoxes(),
             new SetQuantum(),
             new SetStimRad(),
+            new SetPokerchip(),
+            new SetUltracite(),
+            new SetPetBoxes(),
+            new SetMrHandy(),
+            new SetBoxes(),
+            new OverrideStorageLimit(),
+            new MaxResources(),
+            new SetResources(),
+
+            // Dwellers
+            new CreateRandomDweller(),
+            new CreateRandomLegendaryDweller(),
+            new InstaBabyCheat(),
+            new InstaAdultCheat(),
+            new MaxLevelDwellers(),
+            new ResetDwellerLevels(),
+            new OverrideMaxDwellers(),
+            new MaxHappyDwellers(),
+            new FinishAllTrainings(),
             new SetMaxSpecial(),
             new OverrideWeaponDamage(),
             new OverPoweredPets(),
-            new InstaAdultCheat(),
-            new CreateRandomDweller(),
+
+            // PremiumPass
+            new OverridePremiumPlusPass(),
+
+            //new UnlockAllRecipes(),
+            //new OverridePetLimit(),
+            new SetStorageLimit(),
+
+            // Decrypts and Encrypts
             new DecryptGameSaves(),
             new EncryptGameSaves(),
-            new SetPokerchip(),
-            //new UnlockAllRecipes(),
-            new OverrideStorageLimit(),
-            //new OverridePetLimit(),
-            new ResetDwellerLevels(),
-            new SetResources(),
-            new SetStorageLimit(),
-            new OverrideMaxDwellers(),
-            new OverridePremiumPlusPass(),
-            new SetUltracite(),
             };
     }
 }

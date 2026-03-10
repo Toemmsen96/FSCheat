@@ -22,7 +22,7 @@ namespace FSCheat.Cheats
                 bool areMaxed = false;
                 while(!areMaxed){
                     int leveledCount = 0;
-                    foreach(var DwellerExperience in Patches.dwellerExperiences){
+                    foreach(DwellerExperience DwellerExperience in Patches.dwellerExperiences){
                         if (DwellerExperience.CurrentLevel >= 50) {
                             Utils.DisplayMessage("Dweller " + DwellerExperience.ToString() + " is already max level.");
                             continue;

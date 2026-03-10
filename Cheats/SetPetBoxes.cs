@@ -5,11 +5,11 @@ namespace FSCheat.Cheats
 {
     internal class SetPetBoxes : CustomCommand
     {
-        public override string Name => "Set PetBoxes Cheat";
+        public override string Name => "Set PetBoxes";
 
         public override string Description => "set how many Pet Boxes you want";
 
-        public override string Format => "/setmrhandy <amount>";
+        public override string Format => "/setpetboxes <amount>";
         public override string Category => "Resources";
 
         public override void Execute(CommandInput message)

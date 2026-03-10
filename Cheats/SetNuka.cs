@@ -4,9 +4,9 @@ namespace FSCheat.Cheats
 {
     internal class SetNuka : CustomCommand
     {
-        public override string Name => "Nuka Cheat";
+        public override string Name => "Set Nuka Caps";
 
-        public override string Description => "Set Nuka to specified amount";
+        public override string Description => "Set Nuka Caps to specified amount";
 
         public override string Format => "/nuka <amount>";
         public override string Category => "Resources";
@@ -26,7 +26,7 @@ namespace FSCheat.Cheats
                 return;
             }
             resources.Nuka = amount;
-            Utils.DisplayMessage("Nuka Cheat: Set to " + message.Args[0]);
+            Utils.DisplayMessage("Nuka Caps: Set to " + message.Args[0]);
         }
     }
 }

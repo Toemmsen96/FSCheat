@@ -4,7 +4,7 @@ namespace FSCheat.Cheats
 {
     internal class SetUltracite : CustomCommand
     {
-        public override string Name => "Ultracite Cheat";
+        public override string Name => "Set Ultracite";
 
         public override string Description => "Set Ultracite to specified amount";
 
@@ -30,7 +30,7 @@ namespace FSCheat.Cheats
                 DwellerItem item = new DwellerItem(EItemType.Junk, "Ultracite");
                 MonoSingleton<Vault>.Instance.Inventory.AddItem(item);
             }
-            Utils.DisplayMessage("Ultracite Cheat: Set to " + message.Args[0]);
+            Utils.DisplayMessage("Ultracite: Set to " + message.Args[0]);
         }
     }
 }

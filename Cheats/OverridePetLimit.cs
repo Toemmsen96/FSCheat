@@ -9,7 +9,7 @@ namespace FSCheat.Cheats
 
         public override string Description => "Override the pet limit for resources";
         public override string Format => "/overridepetlimit";
-        public override string Category => "Resources";
+        public override string Category => "Pets";
         public override bool IsToggle => true;
         private static bool overrideOn = false;
         public override bool IsEnabled 

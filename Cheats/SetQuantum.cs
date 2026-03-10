@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
     internal class SetQuantum : CustomCommand
     {
-        public override string Name => "Nuka Quantum Cheat";
+        public override string Name => "Set Nuka Quantum";
 
         public override string Description => "Set Nuka Quantum to specified amount";
 
@@ -31,7 +26,7 @@ namespace FSCheat.Cheats
                 return;
             }
             resources.NukeColaQuantum = amount;
-            Utils.DisplayMessage("Nuka Quantum Cheat: Set to " + message.Args[0]);
+            Utils.DisplayMessage("Nuka Quantum: Set to " + message.Args[0]);
         }
     }
 }

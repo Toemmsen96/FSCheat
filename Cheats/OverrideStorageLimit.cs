@@ -18,13 +18,23 @@ namespace FSCheat.Cheats
             get => overrideOn;
             set => overrideOn = value;
         }
-        public static int maxResourcesCount = 1073741823;
-        public static int maxItemCount = 1073741823;
+        public static int maxResourcesCount = 999999999;
+        public static int maxItemCount = 999999999;
         public override bool HasConfig { get; } = true;
         public override bool PersistConfig { get; } = true;
-
+        private static VaultStorage currentStorage;
+        private static GameResources originalResources;
         public override void Execute(CommandInput message)
         {
+            if(overrideOn && currentStorage != null)
+            {
+                originalResources = currentStorage.MaxResources.Clone();
+                currentStorage.SetMaxResources(new GameResources(maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount));
+            }
+            else if(currentStorage != null)
+            {
+                currentStorage.SetMaxResources(originalResources);
+            }
             Utils.DisplayMessage("Override Storage Limit Cheat: " + (overrideOn ? "Enabled" : "Disabled"));
         }
         [HarmonyPatch(typeof(Inventory), "SetMaxItems")]
@@ -39,43 +49,26 @@ namespace FSCheat.Cheats
                 //count = 1073741823;
             }
         }
-        [HarmonyPatch(typeof(VaultStorage), "AddModifier")]
+        // [HarmonyPatch(typeof(VaultStorage), "AddModifier")]
+        // [HarmonyPostfix]
+        // public static void SetMaxResourcesPrefix(ref GameResources ___m_maxResources)
+        // {
+        //     if (overrideOn)
+        //     {
+        //         Utils.DisplayMessage("Overriding storage limit to max value");
+        //         ___m_maxResources += new GameResources(maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount);
+        //     }
+        // }
+        [HarmonyPatch(typeof(VaultStorage), MethodType.Constructor)]
         [HarmonyPostfix]
-        public static void SetMaxResourcesPrefix(ref GameResources ___m_maxResources)
+        public static void VaultStorageConstructorPostfix(VaultStorage __instance)
         {
-            if (overrideOn)
-            {
-                Utils.DisplayMessage("Overriding storage limit to max value");
-                ___m_maxResources += new GameResources(maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount, maxResourcesCount);
-            }
+            currentStorage = __instance;
+            Utils.DisplayMessage("VaultStorage instance stored for reference");
         }
-    }
     
-
+    }
 
 }
-// [Hook("Inventory::SetMaxItems(System.Int32)")]
-// 	public void Hook_SetMaxItems(CallContext context, int count)
-// 	{
-// 		if (_config.UnlimitedItemStorage)
-// 		{
-// 			Inventory inventory = (Inventory)context.This;
-// 			if (inventory is VaultInventory)
-// 			{
-// 				context.IsHandled = true;
-// 				inventory.set_M_itemCountMax(1073741823);
-// 			}
-// 		}
-// 	}
-
-// 	[Hook("FSLOADER::VaultStorage.SetMaxResources(Storage,EResource,System.Single)")]
-// 	public void Hook_SetMaxResources(CallContext context, Storage storage, EResource resource, float oldMax)
-// 	{
-// 		if (_config.Overwrites.Contains(resource))
-// 		{
-// 			context.IsHandled = true;
-// 			context.ReturnValue = 1073741823;
-// 		}
-// 	}   
         
         
