@@ -12,14 +12,19 @@ namespace FSCheat.Cheats
         public override string Format => "/overridestoragelimit";
         public override string Category => "Resources";
         public override bool IsToggle => true;
-        private static bool overrideOn = true;
-        public override bool IsEnabled => overrideOn;
+        private static bool overrideOn = false;
+        public override bool IsEnabled 
+        { 
+            get => overrideOn;
+            set => overrideOn = value;
+        }
         public static int maxResourcesCount = 1073741823;
         public static int maxItemCount = 1073741823;
+        public override bool HasConfig { get; } = true;
+        public override bool PersistConfig { get; } = true;
 
         public override void Execute(CommandInput message)
         {
-            overrideOn = !overrideOn;
             Utils.DisplayMessage("Override Storage Limit Cheat: " + (overrideOn ? "Enabled" : "Disabled"));
         }
         [HarmonyPatch(typeof(Inventory), "SetMaxItems")]

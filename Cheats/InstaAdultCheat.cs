@@ -1,5 +1,6 @@
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
+using System.Reflection;
 
 namespace FSCheat.Cheats
 {
@@ -12,24 +13,39 @@ namespace FSCheat.Cheats
         public override string Format => "/instaadult";
         public override bool IsToggle => true;
         public override string Category => "Dwellers";
-        public override bool IsEnabled => Plugin.instaAdultCheatEnabled;
-
+        private static bool instaAdultOn = false;
+        public override bool IsEnabled 
+        { 
+            get => instaAdultOn;
+            set => instaAdultOn = value;
+        }
+        public override bool HasConfig { get; } = true;
+        public override bool PersistConfig { get; } = true;
 
         public override void Execute(CommandInput message)
         {
-            Plugin.instaAdultCheatEnabled = !Plugin.instaAdultCheatEnabled;
-            IsEnabled = Plugin.instaAdultCheatEnabled;
-            Utils.DisplayMessage("Instaadult Cheat: " + (Plugin.instaAdultCheatEnabled ? "Enabled" : "Disabled"));
-
+            Utils.DisplayMessage("Instaadult Cheat: " + (instaAdultOn ? "Enabled" : "Disabled"));
         }
 
-        [HarmonyPatch(typeof(DwellerParameters), "get_ChildhoodDuration")]
+        [HarmonyPatch(typeof(DwellerChild), MethodType.Constructor, new System.Type[] { typeof(Dweller) })]
         [HarmonyPostfix]
-        public static void GetChildhoodDurationPostfix(ref float __result)
+        public static void StartChildhoodTimerPostfix(DwellerChild __instance)
         {
-            if (Plugin.instaAdultCheatEnabled)
+            if (instaAdultOn)
             {
-                __result = 0f;
+                // Schedule OnGrowUp to be called after 10 seconds
+                MonoSingleton<TaskMgr>.Instance.NewTask(new TimeUnit(2f), (bool online) =>
+                {
+                    MethodInfo method = __instance.GetType().GetMethod("OnGrowUp", BindingFlags.NonPublic | BindingFlags.Instance);
+                    if (method != null)
+                    {
+                        method.Invoke(__instance, new object[] { true });
+                    }
+                    else
+                    {
+                        Utils.DisplayMessage("Failed to find OnGrowUp method for DwellerChild");
+                    }
+                });
             }
         }
 

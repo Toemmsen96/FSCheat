@@ -54,18 +54,6 @@ namespace FSCheat
         }
         */
 
-
-
-        [HarmonyPatch(typeof(Dweller), "get_BabyReady")]
-        [HarmonyPostfix]
-        private static void BabyReady(ref bool __result, ref Dweller __instance)
-        {
-            if (Plugin.instaBabyCheatEnabled)
-            {
-            __result = true;
-            }
-        }
-
         [HarmonyPatch(typeof(PersistenceManager), "Decrypt")]
         [HarmonyPostfix]
         private static void DecryptPostfix(ref string data)
@@ -136,52 +124,6 @@ namespace FSCheat
         {
             trainingSlots.Add(__instance);
             Plugin.logger.LogInfo("TrainingSlot added to list: "+ room);
-        }
-
-        [HarmonyPatch(typeof(BaseSeasonDataManager), "ImportSaveData")]
-        [HarmonyPrefix]
-        private static void SeasonPassPremiumPlus(ref Dictionary<string, object> data)
-        {
-            if (!Plugin.overridePremiumPlusPass) return;
-            try{
-            if (data.ContainsKey("isPremium")){
-                data["isPremium"] = true;
-            } else {
-                data.Add("isPremium", true);
-            };
-            if (data.ContainsKey("isPremiumPlus")){
-                data["isPremiumPlus"] = true;
-            } else {
-                data.Add("isPremiumPlus", true);
-            };
-            Plugin.logger.LogInfo("Season Pass Premium Plus field set to true");
-            } catch (Exception e){
-                Plugin.logger.LogError("Error setting Season Pass Premium Plus field: " + e.Message);
-            }
-        }
-
-        [HarmonyPatch(typeof(DwellerManager), "get_MaximumDwellerCount")]
-        [HarmonyPostfix]
-        private static void MaxDwellersPatch(ref int __result)
-        {
-            if (!Plugin.patchOverrideMaxDwellers) return;
-            __result = 2147483647;
-        }
-
-        [HarmonyPatch(typeof(DwellerManager), "get_VaultIsWithMaxPopulation")]
-        [HarmonyPostfix]
-        private static void MaxDwellersPatch2(ref bool __result)
-        {
-            if (!Plugin.patchOverrideMaxDwellers) return;
-            __result = false;
-        }
-
-        [HarmonyPatch(typeof(Vault), "CanAddDwellers")]
-        [HarmonyPostfix]
-        private static void MaxDwellersPatch3(ref bool __result)
-        {
-            if (!Plugin.patchOverrideLivingQuarters) return;
-            __result = true;
         }
 
         [HarmonyPatch(typeof(ItemParameters), "get_LegendaryCardGlow")]

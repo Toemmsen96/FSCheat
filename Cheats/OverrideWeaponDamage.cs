@@ -13,21 +13,25 @@ namespace FSCheat.Cheats
         public override string Format => "/overridedamage";
         public override string Category => "Weapons";
         public override bool IsToggle => true;
-        public override bool IsEnabled => Plugin.overrideWeaponDamageEnabled;
+        private static bool overrideOn = false;
+        public override bool IsEnabled 
+        { 
+            get => overrideOn;
+            set => overrideOn = value;
+        }
+        public override bool HasConfig { get; } = true;
+        public override bool PersistConfig { get; } = true;
 
         public override void Execute(CommandInput message)
         {
-            Plugin.overrideWeaponDamageEnabled = !Plugin.overrideWeaponDamageEnabled;
-            IsEnabled = Plugin.overrideWeaponDamageEnabled;
-            Utils.DisplayMessage("Weapon Damage Override: " + (Plugin.overrideWeaponDamageEnabled ? "Enabled" : "Disabled"));
-
+            Utils.DisplayMessage("Weapon Damage Override: " + (overrideOn ? "Enabled" : "Disabled"));
         }
 
         [HarmonyPatch(typeof(DwellerWeaponItem), "GetName")]
         [HarmonyPostfix]
         public static void GetResultRarityPostfix(ref LunchBoxCard __instance, ref string __result, ref int ___m_DamageMin, ref int ___m_DamageMax)
         {
-            if (Plugin.overrideWeaponDamageEnabled)
+            if (overrideOn)
             {
                 ___m_DamageMin = 1000;
                 ___m_DamageMax = 1001;

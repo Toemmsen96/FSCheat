@@ -1,4 +1,5 @@
 using CTDynamicModMenu.Commands;
+using HarmonyLib;
 
 namespace FSCheat.Cheats
 {
@@ -11,13 +12,37 @@ namespace FSCheat.Cheats
         public override string Format => "/instababy";
         public override string Category => "Dwellers";
         public override bool IsToggle => true;
-        public override bool IsEnabled => Plugin.instaBabyCheatEnabled;
+        private static bool instaBabyOn = false;
+        public override bool IsEnabled 
+        { 
+            get => instaBabyOn;
+            set => instaBabyOn = value;
+        }
+        public override bool HasConfig { get; } = true;
+        public override bool PersistConfig { get; } = true;
 
         public override void Execute(CommandInput message)
         {
-            Plugin.instaBabyCheatEnabled = !Plugin.instaBabyCheatEnabled;
-            IsEnabled = Plugin.instaBabyCheatEnabled;
-            Utils.DisplayMessage("Instababy Cheat: " + (Plugin.instaBabyCheatEnabled ? "Enabled" : "Disabled"));
+            Utils.DisplayMessage("Instababy Cheat: " + (instaBabyOn ? "Enabled" : "Disabled"));
+        }
+
+        [HarmonyPatch(typeof(Dweller), "get_BabyReady")]
+        [HarmonyPostfix]
+        private static void BabyReady(ref bool __result, ref Dweller __instance)
+        {
+            if (instaBabyOn)
+            {
+            __result = true;
+            }
+        }
+        [HarmonyPatch(typeof(DwellerPartnership), "MakeBabyFinish")]
+        [HarmonyPostfix]
+        private static void MakeBabyFinishPostfix(ref DwellerPartnership __instance)
+        {
+            if (instaBabyOn)
+            {
+                __instance.BabyBirth(true);
+            }
         }
     }
 }

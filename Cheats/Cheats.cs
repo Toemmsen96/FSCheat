@@ -29,6 +29,8 @@ namespace FSCheat.Cheats
             new ResetDwellerLevels(),
             new SetResources(),
             new SetStorageLimit(),
+            new OverrideMaxDwellers(),
+            new OverridePremiumPlusPass(),
             };
     }
 }
