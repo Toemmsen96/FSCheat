@@ -19,5 +19,11 @@ namespace FSCheat
             Plugin.logger.LogError(message);
             CTDynamicModMenu.CTDynamicModMenu.Instance.DisplayError(message);
         }
+
+        public static void DisplayWarning(string message)
+        {
+            Plugin.logger.LogWarning(message);
+            CTDynamicModMenu.CTDynamicModMenu.Instance.DisplayWarning(message);
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace FSCheat.Cheats
 {
     internal class SetMrHandy : CustomCommand
     {
-        public override string Name => "Set MrHandy Cheat";
+        public override string Name => "Set MrHandy Boxes";
 
         public override string Description => "set how many MrHandy Boxes you want";
 
@@ -18,7 +18,7 @@ namespace FSCheat.Cheats
             if (!(message.Args[0].Length > 0))
             {
                 MonoSingleton<Vault>.Instance.AddLunchBox(ELunchBoxType.MrHandy);
-                Utils.DisplayMessage("Set MrHandyBoxes Cheat added one box");
+                Utils.DisplayMessage("Set MrHandyBoxes added one box");
             }
             else{
                 for(float i=0; i<float.Parse(message.Args[0]); i++){

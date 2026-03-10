@@ -5,7 +5,7 @@ namespace FSCheat.Cheats
 {
     internal class SetBoxes : CustomCommand
     {
-        public override string Name => "Set Lunchboxes Cheat";
+        public override string Name => "Set Lunchboxes";
 
         public override string Description => "set how many boxes you want";
 
@@ -18,7 +18,7 @@ namespace FSCheat.Cheats
             if (!(message.Args[0].Length > 0))
             {
                 MonoSingleton<Vault>.Instance.AddLunchBox();
-                Utils.DisplayMessage("Set Boxes Cheat added one box");
+                Utils.DisplayMessage("Set Boxes added one box");
             }
             else{
                 for(float i=0; i<float.Parse(message.Args[0]); i++){

@@ -16,8 +16,13 @@ namespace FSCheat.Cheats
             new SetMrHandy(),
             new SetBoxes(),
             new OverrideStorageLimit(),
+            new SetStorageLimit(),
             new MaxResources(),
             new SetResources(),
+
+            // Items
+            new SetItemLimit(),
+            new OverrideItemLimit(),
 
             // Dwellers
             new CreateRandomDweller(),
@@ -38,7 +43,6 @@ namespace FSCheat.Cheats
 
             //new UnlockAllRecipes(),
             //new OverridePetLimit(),
-            new SetStorageLimit(),
 
             // Decrypts and Encrypts
             new DecryptGameSaves(),
