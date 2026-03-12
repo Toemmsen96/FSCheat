@@ -9,7 +9,7 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 ## ✨ Features
 
 ### Resource Management
-- **Max Resources** - Instantly max out all vault resources (food, water, power)
+- **Max Resources** - Toggle max out all vault resources (food, water, power)
 - **Set Nuka-Cola Quantum** - Set your Quantum cola count
 - **Set Nuka-Cola** - Set your regular Nuka-Cola count
 - **Set Stimpacks & RadAway** - Adjust your medical supplies
@@ -17,6 +17,9 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 - **Set Pet Carriers** - Control your pet carrier count
 - **Set Mr. Handy** - Add Mr. Handy robots to your vault
 - **Set Pokerchips** - Add Pokerchips to your vault
+- **Set Ultracite** - Add Ultracite to your vault
+- **Override Storage Limit** - Override & Set Storage Limit
+- **Override Item Limit** - Override & Set Item Limit 
 
 ### Dweller Management
 - **Instant Baby** - Speed up pregnancy and childbirth
@@ -26,10 +29,11 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 - **Set Max SPECIAL** - Max out all SPECIAL stats for dwellers
 - **Finish All Training** - Complete all training room activities instantly
 - **Create Random Dweller** - Generate new dwellers
+- **Override Dweller limit** - Add more than 200 Dwellers
 
 ### Items & Equipment
 - **Overpowered Pets** - Make pets incredibly powerful
-- **Override Item Rarity** - Change the rarity of items
+- ~~**Override Item Rarity** - Change the rarity of items~~ (_TBD/Was Planned_)
 - **Override Weapon Damage** - Modify weapon damage values
 
 ### Utilities
@@ -50,19 +54,11 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 
 ## 🔧 Installation
 
-1. **Install BepInEx**
-   - Download BepInEx 5.x from [BepInEx releases](https://github.com/BepInEx/BepInEx/releases)
-   - Extract BepInEx to your Fallout Shelter game directory
-   - Run the game once to generate BepInEx folders
+1. **Download BepInEx**
+   - Download BepInExInstaller from: https://github.com/Toemmsen96/BepInExInstallerGUI
+   - Select the Windows or Linux Version
 
-2. **Install CTDynamicModMenu**
-   - Download CTDynamicModMenu from its repository or take it here from Dependencies
-   - Place the DLL in `BepInEx/plugins/`
-
-3. **Install FSCheat**
-   - Download the latest release of FSCheat
-   - Place `FSCheat.dll` in `BepInEx/plugins/`
-   - Launch the game
+2. ****
 
 ## 🎯 How to Use
 
