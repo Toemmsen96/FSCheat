@@ -15,7 +15,14 @@ namespace FSCheat.Cheats
         public override void Execute(CommandInput message)
         {
             Dweller dweller = MonoSingleton<DwellerSpawner>.Instance.CreateWaitingDweller(EGender.Any, false, 0, EDwellerRarity.Legendary, true);
-            Utils.DisplayMessage("Generated Legendary Dweller: " + dweller.Name);
+                        if (dweller != null)
+            {
+                Utils.DisplayMessage("Generated Custom Dweller: " + dweller.Name);
+            }
+            else
+            {
+                Utils.DisplayWarning("Failed to generate custom dweller, this may be because there are too many in front of the vault door.");
+            }
         }
     }
 }

@@ -27,6 +27,8 @@ namespace FSCheat.Cheats
             // Dwellers
             new CreateRandomDweller(),
             new CreateRandomLegendaryDweller(),
+            new CreateRandomUniqueDweller(),
+            new CreateRandomCustomDweller(),
             new InstaBabyCheat(),
             new InstaAdultCheat(),
             new MaxLevelDwellers(),

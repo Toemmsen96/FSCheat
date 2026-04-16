@@ -24,6 +24,10 @@ namespace FSCheat
         internal static byte[] keyBytes;
         internal static byte[] ivBytes;
         internal static string decryptPassphrase;
+        internal static DwellerManager dwellerManagerInstance;
+        internal static ShuffleBag<UniqueDwellerData> rareDwellerShuffle;
+        internal static ShuffleBag<UniqueDwellerData> legendaryDwellerShuffle;
+        internal static UniqueDwellerData[] customDwellers;
         private static Color legendaryColor = Color.magenta;
         private static Color normalColor = Color.green;
         private static Color rareColor = Color.cyan;
@@ -34,6 +38,18 @@ namespace FSCheat
         {
             __result = true;
             //Plugin.logger.LogInfo("Editor enabled");
+        }
+
+        [HarmonyPatch(typeof(DwellerManager), "OnAwake")]
+        [HarmonyPostfix]
+        private static void DwellerManagerAwake(ref DwellerManager __instance, ref ShuffleBag<UniqueDwellerData> ___m_rareDwellerShuffle, ShuffleBag<UniqueDwellerData> ___m_legendaryDwellersShuffle, ref UniqueDwellerData[] ___m_customDwellers)
+        {
+
+            Plugin.logger.LogInfo("DwellerManager Awake called");
+            dwellerManagerInstance = __instance;
+            rareDwellerShuffle = ___m_rareDwellerShuffle;
+            legendaryDwellerShuffle = ___m_legendaryDwellersShuffle;
+            customDwellers = ___m_customDwellers;
         }
 
         /*

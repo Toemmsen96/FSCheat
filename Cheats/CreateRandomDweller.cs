@@ -18,7 +18,14 @@ namespace FSCheat.Cheats
         {
             EDwellerRarity rarity = (EDwellerRarity)random.Next((int)EDwellerRarity.Common, (int)EDwellerRarity.Legendary + 1);
             Dweller dweller = MonoSingleton<DwellerSpawner>.Instance.CreateWaitingDweller(EGender.Any, false, 0, rarity, true);
-            Utils.DisplayMessage("Generated " + rarity + " Dweller: " + dweller.Name);
+                        if (dweller != null)
+            {
+                Utils.DisplayMessage("Generated Custom Dweller: " + dweller.Name);
+            }
+            else
+            {
+                Utils.DisplayWarning("Failed to generate custom dweller, this may be because there are too many in front of the vault door.");
+            }
         }
     }
 }
