@@ -29,7 +29,7 @@ namespace FSCheat.Cheats
             }
             */
             foreach(var DwellerExperience in Patches.dwellerExperiences){
-                DwellerExperience.SetLevelAndMinexp(1);
+                DwellerExperience.SetLevelAndMinExp(1);
             }
             }
             catch (Exception e)

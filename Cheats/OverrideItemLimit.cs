@@ -21,7 +21,7 @@ namespace FSCheat.Cheats
         public static int maxItemCount = 999999999;
         public override bool HasConfig { get; } = true;
         public override bool PersistConfig { get; } = true;
-        internal static VaultInventory currentInventory;
+        internal static VaultInventory currentInventory = null;
         private static int originalMaxItems;
         public override void Execute(CommandInput message)
         {
