@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
 
@@ -9,14 +8,14 @@ namespace FSCheat.Cheats
     {
         public override string Name => "Override Premium Plus Pass";
 
-        public override string Description => "Overrides the Premium Plus Pass status to be always active";
+        public override string Description => "Grants Premium Plus Pass status and records it in the season pass purchase history";
 
         public override string Format => "/overridepremiumpluspass";
         public override string Category => "Premium Pass";
         public override bool IsToggle => true;
         private static bool isOverriding = true;
-        public override bool IsEnabled 
-        { 
+        public override bool IsEnabled
+        {
             get => isOverriding;
             set => isOverriding = value;
         }
@@ -28,28 +27,22 @@ namespace FSCheat.Cheats
             Utils.DisplayMessage("Override Premium Plus Pass: " + (isOverriding ? "Enabled" : "Disabled"));
         }
 
-
         [HarmonyPatch(typeof(BaseSeasonDataManager), "ImportSaveData")]
-        [HarmonyPrefix]
-        private static void SeasonPassPremiumPlus(ref Dictionary<string, object> data)
+        [HarmonyPostfix]
+        private static void SeasonPassPremiumPlus(BaseSeasonDataManager __instance)
         {
-            try{
-            if (data.ContainsKey("isPremium")){
-                data["isPremium"] = isOverriding;
-            } else {
-                data.Add("isPremium", isOverriding);
-            };
-            if (data.ContainsKey("isPremiumPlus")){
-                data["isPremiumPlus"] = isOverriding;
-            } else {
-                data.Add("isPremiumPlus", isOverriding);
-            };
-            Plugin.logger.LogInfo("Season Pass Premium Plus field set to " + isOverriding);
-            } catch (Exception e){
-                Plugin.logger.LogError("Error setting Season Pass Premium Plus field: " + e.Message);
+            if (!isOverriding) return;
+            if (SeasonPassDataManager.Instance == null) return;
+            if (Traverse.Create(SeasonPassDataManager.Instance).Field("m_seasonPassPurchaseHistory").GetValue() == null) return;
+            try
+            {
+                __instance.EnablePremiumPlusPass(saveNonVaultFlags: false);
+                Plugin.logger.LogInfo("Season Pass Premium Plus granted");
+            }
+            catch (Exception e)
+            {
+                Plugin.logger.LogError("Error granting Season Pass Premium Plus: " + e.Message);
             }
         }
-        
-        }
-        
+    }
 }
