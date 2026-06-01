@@ -30,11 +30,22 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 - **Finish All Training** - Complete all training room activities instantly
 - **Create Random Dweller** - Generate new dwellers
 - **Override Dweller limit** - Add more than 200 Dwellers
+- **Set Max Happiness** - Make everyone Happy
 
 ### Items & Equipment
 - **Overpowered Pets** - Make pets incredibly powerful
 - ~~**Override Item Rarity** - Change the rarity of items~~ (_TBD/Was Planned_)
 - **Override Weapon Damage** - Modify weapon damage values
+
+### Crafting & Recipes
+- **Unlock All Recipes** - Instantly unlock every crafting recipe
+- **Free Crafting** _(toggle)_ - Bypass all crafting requirements — no ingredients or Nuka cost needed
+- **Infinite Crafting Nuka** _(toggle)_ - Nuka cost is never deducted when crafting; ingredients still required
+- **Bypass Crafting Level Requirement** _(toggle)_ - Access Rare and Legendary recipes regardless of crafting room upgrade level
+
+### Rooms
+- **Bypass Room Upgrade Requirement** _(toggle)_ - Remove the dweller count requirement to upgrade rooms (crafting rooms, Overseer, etc.)
+- **Bypass Room Build Requirement** _(toggle)_ - Bypass the dweller count requirement to unlock building a room
 
 ### Utilities
 - **Decrypt Game Saves** - Decrypt your save files for backup/editing
@@ -58,7 +69,9 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
    - Download BepInExInstaller from: https://github.com/Toemmsen96/BepInExInstallerGUI
    - Select the Windows or Linux Version
 
-2. ****
+2. **Download Plugins.zip from NexusMods**
+   - https://www.nexusmods.com/games/falloutshelter/mods/103/
+   - Use the BepInExInstaller to select the zip and install the mods.
 
 ## 🎯 How to Use
 
