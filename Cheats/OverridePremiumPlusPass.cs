@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
 
@@ -14,6 +15,7 @@ namespace FSCheat.Cheats
         public override string Category => "Premium Pass";
         public override bool IsToggle => true;
         private static bool isOverriding = true;
+        private static List<BaseSeasonDataManager> seasonDataManagers = new List<BaseSeasonDataManager>();
         public override bool IsEnabled
         {
             get => isOverriding;
@@ -24,6 +26,22 @@ namespace FSCheat.Cheats
 
         public override void Execute(CommandInput message)
         {
+            if (isOverriding)
+            {
+                foreach (var manager in seasonDataManagers)
+                {
+                    if (manager == null) continue;
+                    try
+                    {
+                        manager.EnablePremiumPlusPass(saveNonVaultFlags: false);
+                        Plugin.logger.LogInfo("Season Pass Premium Plus granted for existing manager");
+                    }
+                    catch (Exception e)
+                    {
+                        Plugin.logger.LogError("Error granting Season Pass Premium Plus for existing manager: " + e.Message);
+                    }
+                }
+            }
             Utils.DisplayMessage("Override Premium Plus Pass: " + (isOverriding ? "Enabled" : "Disabled"));
         }
 
@@ -31,9 +49,13 @@ namespace FSCheat.Cheats
         [HarmonyPostfix]
         private static void SeasonPassPremiumPlus(BaseSeasonDataManager __instance)
         {
+            seasonDataManagers.Add(__instance);
             if (!isOverriding) return;
-            if (SeasonPassDataManager.Instance == null) return;
-            if (Traverse.Create(SeasonPassDataManager.Instance).Field("m_seasonPassPurchaseHistory").GetValue() == null) return;
+            if (SeasonPassDataManager.Instance == null)
+            {
+                Plugin.logger.LogError("SeasonPassDataManager instance is null. Cannot grant Premium Plus Pass.");
+                return;
+            };
             try
             {
                 __instance.EnablePremiumPlusPass(saveNonVaultFlags: false);
