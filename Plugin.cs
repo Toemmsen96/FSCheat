@@ -43,7 +43,13 @@ namespace FSCheat
             harmony.PatchAll(typeof(Cheats.OverridePremiumPlusPass));
             harmony.PatchAll(typeof(Cheats.ResetDwellerLevels));
             harmony.PatchAll(typeof(Cheats.MaxHappyDwellers));
-            harmony.PatchAll(typeof(Cheats.OverrideItemLimit));    
+            harmony.PatchAll(typeof(Cheats.OverrideItemLimit));
+            harmony.PatchAll(typeof(Cheats.FreeCraftingCheat));
+            harmony.PatchAll(typeof(Cheats.InfiniteCraftingNuka));
+            harmony.PatchAll(typeof(Cheats.BypassUpgradeDwellerRequirement));
+            harmony.PatchAll(typeof(Cheats.BypassCraftingLevelRequirement));
+            harmony.PatchAll(typeof(Cheats.BypassRoomBuildRequirement));
+
             logger.LogWarning((object)"\r\n" +
                 "  ______                                                                         \r\n" +
                 " /_  __/  ____   ___    ____ ___    ____ ___    _____  ___    ____    _____      \r\n" +

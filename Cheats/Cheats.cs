@@ -43,7 +43,14 @@ namespace FSCheat.Cheats
             // PremiumPass
             new OverridePremiumPlusPass(),
 
-            //new UnlockAllRecipes(),
+            new UnlockAllRecipes(),
+            new FreeCraftingCheat(),
+            new InfiniteCraftingNuka(),
+
+            // Rooms
+            new BypassUpgradeDwellerRequirement(),
+            new BypassCraftingLevelRequirement(),
+            new BypassRoomBuildRequirement(),
             //new OverridePetLimit(),
 
             // Decrypts and Encrypts
