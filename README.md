@@ -93,10 +93,22 @@ FSCheat is a BepInEx plugin for Fallout Shelter that gives you complete control 
 git clone https://github.com/Toemmsen96/FSCheat.git
 cd FSCheat
 
-# Build the project
-dotnet build -c Release
+# Copy Dependencies (look at deps.txt)
+# Can be done using 
+# https://github.com/Toemmsen96/BepInEx-Build-N-Copy/blob/main/copy_dependencies.sh or .ps1
+../BepInEx-Build-N-Copy/copy_dependencies.sh .  
+# BepInEx-Build-N-Copy is cloned aside from this Projects Dir here
+# Or just find and copy them manually
 
+
+# Build the project using normal dotnet 
+dotnet build -c Release
 # Output will be in bin/Release/net48/
+
+# or use BepInEx-Build-N-Copy to copy them to the game automatically
+../BepInEx-Build-N-Copy/build_n_copy.sh .  
+
+
 ```
 
 ### Dependencies Required
