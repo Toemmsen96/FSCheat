@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
-using BepInEx.Configuration;
 using HarmonyLib;
-using UnityEngine;
-using FSCheat.Cheats;
 using CTDynamicModMenu.Commands;
 
 
@@ -20,7 +12,7 @@ namespace FSCheat
     {
         private const string modGUID = "toemmsen.FSCheats";
         private const string modName = "FSCheats";
-        private const string modVersion = "1.0.0";
+        private const string modVersion = "1.5.2";
         private readonly Harmony harmony = new Harmony(modGUID);
         internal static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(modGUID);
         private static Plugin instance;

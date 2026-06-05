@@ -1,5 +1,6 @@
 using CTDynamicModMenu.Commands;
 using HarmonyLib;
+using UnityEngine;
 
 namespace FSCheat.Cheats
 {
@@ -28,6 +29,32 @@ namespace FSCheat.Cheats
             if (!isEnabled) return;
             if (__result == ERoomBuildLockState.Locked)
                 __result = ERoomBuildLockState.Unlocked;
+        }
+
+        // BiggerVault patches OnRoomEntryIndexChanged to set lock state and call SetAvailable() directly,
+        // bypassing IsRoomAvailable entirely for Ultracite rooms. Running at Priority.Low ensures this
+        // postfix executes after BiggerVault's and gets the final say.
+        [HarmonyPatch(typeof(UIRoomBuildList), "OnRoomEntryIndexChanged")]
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Low)]
+        private static void OnRoomEntryIndexChangedPostfix(UIRoomBuildList __instance, GameObject entry)
+        {
+            if (!isEnabled || entry == null) return;
+            var component = entry.GetComponent<UIRoomBuildListItem>();
+            if (component == null || component.m_RoomInfo == null) return;
+
+            var fieldInfo = AccessTools.Field(typeof(UIRoomBuildList), "m_roomAvailableConstruction");
+            if (fieldInfo == null) return;
+
+            if (fieldInfo.GetValue(__instance) is not ERoomBuildLockState[] states) return;
+            int roomIndex = (int)component.m_RoomInfo.m_eRoomType;
+            if (roomIndex < 0 || roomIndex >= states.Length) return;
+
+            if (states[roomIndex] == ERoomBuildLockState.Locked)
+            {
+                states[roomIndex] = ERoomBuildLockState.Unlocked;
+                component.SetAvailable();
+            }
         }
     }
 }
