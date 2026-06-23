@@ -19,10 +19,9 @@ namespace FSCheat.Cheats
                 Utils.DisplayError("Message: Please specify an amount of Ultracite to set.");
                 return;
             }
-            float amount = float.Parse(message.Args[0]);
-            if (amount <= 0)
+            if (!float.TryParse(message.Args[0], out float amount) || amount < 0)
             {
-                Utils.DisplayError("Message: Amount cannot be negative.");
+                Utils.DisplayError("Message: Please enter a valid non-negative number.");
                 return;
             }
             for(int i = 0; i < amount; i++)

@@ -12,7 +12,7 @@ namespace FSCheat
     {
         private const string modGUID = "toemmsen.FSCheats";
         private const string modName = "FSCheats";
-        private const string modVersion = "1.5.2";
+        private const string modVersion = "1.5.3";
         private readonly Harmony harmony = new Harmony(modGUID);
         internal static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(modGUID);
         private static Plugin instance;

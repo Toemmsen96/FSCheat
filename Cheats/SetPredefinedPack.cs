@@ -4,13 +4,13 @@ using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
 {
-    internal class SetPetBoxes : CustomCommand
+    internal class SetPredefinedPack : CustomCommand
     {
-        public override string Name => "Set PetBoxes";
+        public override string Name => "Set Predefined Pack Boxes";
 
-        public override string Description => "set how many Pet Boxes you want";
+        public override string Description => "set how many Predefined Pack boxes you want";
 
-        public override string Format => "/setpetboxes <amount>";
+        public override string Format => "/setpredefinedpack <amount>";
         public override string Category => "Resources";
 
         public override void Execute(CommandInput message)
@@ -24,13 +24,13 @@ namespace FSCheat.Cheats
             var vault = MonoSingleton<Vault>.Instance;
             var toRemove = new List<LunchBox>();
             foreach (var box in vault.LocalLunchBoxes)
-                if (box.LunchBoxType == ELunchBoxType.PetCarrier)
+                if (box.LunchBoxType == ELunchBoxType.PredefinedPack)
                     toRemove.Add(box);
             foreach (var box in toRemove)
                 vault.RemoveLunchBox(box);
             for (int i = 0; i < amount; i++)
-                vault.AddLunchBox(ELunchBoxType.PetCarrier);
-            Utils.DisplayMessage("Pet boxes set to: " + amount);
+                vault.AddLunchBox(ELunchBoxType.PredefinedPack);
+            Utils.DisplayMessage("Predefined Pack boxes set to: " + amount);
             }
             catch (Exception e){
                 Utils.DisplayError("Message: " + e.Message);

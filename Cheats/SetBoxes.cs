@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CTDynamicModMenu.Commands;
 
 namespace FSCheat.Cheats
@@ -15,21 +16,25 @@ namespace FSCheat.Cheats
         public override void Execute(CommandInput message)
         {
             try{
-            if (!(message.Args[0].Length > 0))
+            if (!int.TryParse(message.Args[0], out int amount) || amount < 0)
             {
-                MonoSingleton<Vault>.Instance.AddLunchBox();
-                Utils.DisplayMessage("Set Boxes added one box");
+                Utils.DisplayError("Message: Please enter a valid non-negative number.");
+                return;
             }
-            else{
-                for(float i=0; i<float.Parse(message.Args[0]); i++){
-                    MonoSingleton<Vault>.Instance.AddLunchBox();
-                }
-                Utils.DisplayMessage("Added: " + message.Args[0]+ " boxes");
-            }}
+            var vault = MonoSingleton<Vault>.Instance;
+            var toRemove = new List<LunchBox>();
+            foreach (var box in vault.LocalLunchBoxes)
+                if (box.LunchBoxType == ELunchBoxType.Regular)
+                    toRemove.Add(box);
+            foreach (var box in toRemove)
+                vault.RemoveLunchBox(box);
+            for (int i = 0; i < amount; i++)
+                vault.AddLunchBox(ELunchBoxType.Regular);
+            Utils.DisplayMessage("Lunchboxes set to: " + amount);
+            }
             catch (Exception e){
                 Utils.DisplayError("Message: " + e.Message);
             }
-
         }
     }
 }

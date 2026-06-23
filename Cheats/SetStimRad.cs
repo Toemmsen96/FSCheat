@@ -19,10 +19,9 @@ namespace FSCheat.Cheats
                 Utils.DisplayError("Message: Please specify an amount of Stimpacks and Radaways to set.");
                 return;
             }
-            float amount = float.Parse(message.Args[0]);
-            if (amount <= 0)
+            if (!float.TryParse(message.Args[0], out float amount) || amount < 0)
             {
-                Utils.DisplayError("Message: Amount cannot be negative.");
+                Utils.DisplayError("Message: Please enter a valid non-negative number.");
                 return;
             }
             resources.StimPack = amount;
